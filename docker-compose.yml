@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  arkiver:
+    image: ghcr.io/thomaspelletier/arkiver:latest
+    container_name: arkiver
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./config/config.yaml:/app/config/config.yaml
+      # Mount directories for local storage backends if needed
+      - ./data/storage1:/home
+      - ./data/storage2:/home2
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      # Uncomment and modify if you want to use a different config path
+      # - CONFIG_PATH=/app/config/config.yaml
