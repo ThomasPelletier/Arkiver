@@ -86,6 +86,18 @@ docker run -d \
   arkiver
 ```
 
+3. Or use the ghcr.io image:
+
+```bash
+docker run -d \
+  -p 3001:3001 \
+  -v $(pwd)/config.yaml:/app/config/config.yaml \
+  --name arkiver \
+  ghcr.io/thomaspelletier/arkiver:latest
+```
+
+
+
 ## Configuration file
 
 Create a `config.yaml` file. By default, it should be in the root directory of the project, but you can specify a different path using the `CONFIG_PATH` environment variable:
