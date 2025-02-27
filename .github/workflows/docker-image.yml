@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
+# Add these permission settings
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
