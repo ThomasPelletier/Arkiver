@@ -26,20 +26,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Extract metadata for Docker
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ghcr.io/${{ github.repository_owner | lowercase }}/${{ github.repository | split('/') | last | lowercase }}/arkiver
-          tags: |
-            type=raw,value=${{ steps.package-version.outputs.version }}
-            type=raw,value=latest
-          
+      
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: |
+            ghcr.io/${{ github.repository }}/arkiver:${{ steps.package-version.outputs.version }}
+            ghcr.io/${{ github.repository }}/arkiver:latest
