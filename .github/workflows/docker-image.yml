@@ -19,6 +19,10 @@ jobs:
       - name: Get version from package.json
         id: package-version
         run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Get lowercase repository name
+        id: repo-name
+        run: echo "name=$(echo ${{ github.event.repository.name }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
       
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -33,5 +37,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ steps.package-version.outputs.version }}
-            ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
+            ghcr.io/${{ github.repository_owner }}/${{ steps.repo-name.outputs.name }}:${{ steps.package-version.outputs.version }}
+            ghcr.io/${{ github.repository_owner }}/${{ steps.repo-name.outputs.name }}:latest
