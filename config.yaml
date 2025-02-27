@@ -1,0 +1,33 @@
+backends:
+  source_s3:
+    type: s3
+    bucket: source-bucket
+    region: us-west-2
+    s3Prefix: backups/
+
+  minio_backend:
+    type: s3
+    bucket: temp
+    region: us-east-1
+    endpoint: https://minio.example
+    accessKeyId: key
+    secretAccessKey: key
+    forcePathStyle: true
+    sslEnabled: true
+    s3Prefix: backups
+
+  local_storage1:
+    type: local
+    path: /home
+
+tasks:
+  daily_backup:
+    source: local_storage1
+    destination: local_storage2
+    schedule: "0 * * * *"
+    retention: 5
+    prefix: daily-backup
+    encryption:
+      enabled: true
+      key: "your-secret-key"
+  
