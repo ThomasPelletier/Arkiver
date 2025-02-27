@@ -11,6 +11,10 @@ Arkiver is a self-hosted file archiving solution I created to fill a specific ne
 
 So I built Arkiver to do exactly that - create archives in a simple, secure, and reliable way. No deduplication, no incremental backups, just straightforward file archiving with encryption and flexible storage options.
 
+## Screenshots
+
+![front](img/front.png)
+
 ## Features
 
 - **Multiple Storage Options**:
