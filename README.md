@@ -179,12 +179,6 @@ Tasks can be in one of three states:
 - POST `/api/tasks/:taskName/execute` - Manually execute a task
 - POST `/api/config/reload` - Reload configuration
 
-## Development
-
-- Run: `npm start`
-- Build: `npm run build`
-- Test: `npm test`
-
 ## License
 
 Arkiver is licensed under the GNU General Public License v3.0 (GPLv3).
