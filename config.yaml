@@ -20,6 +20,10 @@ backends:
     type: local
     path: /home
 
+  local_storage2:
+    type: local
+    path: /home2
+
 tasks:
   daily_backup:
     source: local_storage1
